@@ -3,7 +3,7 @@ RSpec.describe WordGenerator do
     expect(WordGenerator::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "should define max word length" do
+    expect(described_class::MAX_WORD_LENGTH).to eq(9)
   end
 end

@@ -1,0 +1,10 @@
+test
+hi
+hello
+home
+brown
+glue
+gin
+win
+legacy
+temporary
