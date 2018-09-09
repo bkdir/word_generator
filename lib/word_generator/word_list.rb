@@ -4,21 +4,23 @@ module WordGenerator
     FILE_PATH = "data/words.txt".freeze
     
     def self.contains?(word)
-      !list_of_words[word].nil?
+      data_source = WordGenerator.configuration.data_source
+      !list(data_source: data_source)[word].nil?
+    end
+
+    def self.list(data_source:)
+      return @list_of_words if @list_of_words
+      @list_of_words = (data_source == :file) ? read_words_from_file : []
     end
 
     private
 
-    def self.list_of_words
-      return @list_of_words if @list_of_words
-      @list_of_words = read_words_from_file
-    end
-
     def self.read_words_from_file
-      File.foreach(FILE_PATH).with_object({}) do |line, result|
+      path = File.expand_path("../#{FILE_PATH}", File.dirname(__dir__))
+
+      File.foreach(path).with_object({}) do |line, result|
         word = line.chomp!
-        next unless VALID_WORD_REGEX.match?(word)
-        result[word] = 1
+        result[word] = 1 if VALID_WORD_REGEX.match?(word)
       end
     end
   end
