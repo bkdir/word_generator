@@ -8,9 +8,9 @@ module WordGenerator
       !list(data_source: data_source)[word].nil?
     end
 
-    def self.list(data_source:)
-      return @list_of_words if @list_of_words
-      @list_of_words = (data_source == :file) ? read_words_from_file : []
+    def self.list(data_source: :file)
+      return [] unless data_source == :file
+      @list_of_words ||= read_words_from_file
     end
 
     private
