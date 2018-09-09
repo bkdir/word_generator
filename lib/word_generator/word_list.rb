@@ -2,7 +2,7 @@ module WordGenerator
   class WordList
     VALID_WORD_REGEX = /^\b[a-zA-Z0-9_]+\b$/
     FILE_PATH = "data/words.txt".freeze
-
+    
     def self.contains?(word)
       !list_of_words[word].nil?
     end

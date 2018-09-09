@@ -1,4 +1,5 @@
 require "word_generator/version"
+require "word_generator/word"
 require "word_generator/word_list"
 require "word_generator/generator"
 
